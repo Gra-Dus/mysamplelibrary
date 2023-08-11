@@ -1,5 +1,3 @@
-import com.android.build.gradle.internal.scope.ProjectInfo.Companion.getBaseName
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -8,7 +6,7 @@ plugins {
 
 
 group = "com.github.Gra-Dus"
-version = "1.0.4"
+version = "1.0.6"
 
 
 android {
@@ -54,7 +52,7 @@ afterEvaluate {
                 from(components.getByName("release"))
                 groupId = "com.github.Gra-Dus"
                 artifactId = "sample_library"
-                version = "1.0.4"
+                version = "1.0.6"
             }
         }
     }
