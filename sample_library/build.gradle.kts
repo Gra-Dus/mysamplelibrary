@@ -1,18 +1,30 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    `maven-publish`
 }
 
+
+group = "com.github.Gra-Dus"
+version = "1.0.1"
+
+
+publishing{
+    publications{
+        create<MavenPublication>("maven"){
+            groupId="ru.grad.library"
+            artifactId= "library"
+            version = "1.0.2"
+        }
+    }
+}
 android {
     namespace = "ru.gradus.sample_library"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "ru.gradus.sample_library"
         minSdk = 24
         targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -29,11 +41,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-    }
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-        }
     }
 }
 
