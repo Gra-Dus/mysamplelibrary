@@ -1,23 +1,16 @@
+import com.android.build.gradle.internal.scope.ProjectInfo.Companion.getBaseName
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    `maven-publish`
+    id("maven-publish")
 }
 
 
 group = "com.github.Gra-Dus"
-version = "1.0.1"
+version = "1.0.4"
 
 
-publishing{
-    publications{
-        create<MavenPublication>("maven"){
-            groupId="ru.grad.library"
-            artifactId= "library"
-            version = "1.0.2"
-        }
-    }
-}
 android {
     namespace = "ru.gradus.sample_library"
     compileSdk = 33
@@ -52,4 +45,17 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components.getByName("release"))
+                groupId = "com.github.Gra-Dus"
+                artifactId = "sample_library"
+                version = "1.0.4"
+            }
+        }
+    }
 }
